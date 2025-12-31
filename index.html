@@ -17,47 +17,47 @@ body{
   font-family:'Poppins',sans-serif;
   text-align:center;
   overflow-x:hidden;
-  color:white;
+
+  /* NEW COLOR FIX */
+  color:#2e1a47; /* deep purple – soft & readable */
 }
 
-/* COMMON */
 .hidden{display:none !important;}
 section{
+  min-height:90vh;
   padding:40px 20px;
-  min-height:80vh;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
 }
 
-/* TEXT */
 .main-text{
   font-family:'Playfair Display',serif;
   font-size:26px;
-  text-shadow:0 2px 10px rgba(0,0,0,0.5);
+  color:#2b174f; /* dark royal purple */
+  text-shadow:0 4px 12px rgba(255,255,255,0.6);
 }
 .sub-text{
   font-size:18px;
   margin-top:18px;
-  line-height:1.6;
+  line-height:1.7;
 }
 
-/* BUTTON */
 .btn{
   padding:14px 26px;
   border-radius:30px;
   border:none;
-  margin:12px;
+  margin:10px;
   background:#fff;
   color:#333;
   font-weight:600;
   cursor:pointer;
-  box-shadow:0 6px 15px rgba(0,0,0,0.3);
+  box-shadow:0 6px 15px rgba(0,0,0,.3);
 }
-.btn:active{transform:scale(0.9);}
+.btn:active{transform:scale(.9);}
 
-/* 🐻🐼 MILK & MOCHA */
+/* MILK & MOCHA */
 .characters{
   position:fixed;
   bottom:10px;
@@ -71,7 +71,7 @@ section{
 }
 .characters img{width:90px;}
 
-/* REEL STYLE ANIMATIONS */
+/* ANIMATIONS */
 .intro{animation:intro .8s ease;}
 @keyframes intro{
   0%{transform:translateY(0) scale(1);}
@@ -93,12 +93,12 @@ section{
 
 /* LETTER */
 #letter-box{
-  background:rgba(255,255,255,.9);
+  background:rgba(255,255,255,.92);
   color:#2e1a47;
   padding:25px;
   border-radius:15px;
-  max-width:92%;
-  line-height:1.7;
+  max-width:95%;
+  line-height:1.8;
 }
 
 /* PHOTOS */
@@ -142,8 +142,8 @@ section{
 
 <!-- MUSIC -->
 <section id="music" class="hidden">
-  <h2 class="main-text">A little surprise for you 🎵</h2>
-  <button class="btn" onclick="playMusic()">Play a little magic ✨</button>
+  <h2 class="main-text">A little magic for you 🎵</h2>
+  <button class="btn" onclick="playMusic()">Play ✨</button>
 </section>
 
 <!-- OPENING -->
@@ -152,32 +152,63 @@ section{
     O my God 😯 how gorgeous you are,<br>
     <span id="moonText">I can't believe I am seeing the second moon 🌙.</span>
   </h2>
-
   <p class="sub-text">
     Itni beautiful Girl 🫠✨<br>
     Pkka aap Anshika ho 💜. am I right ?
   </p>
-
-  <button class="btn" onclick="goQuestion()">Yes 💓</button>
-  <button class="btn" onclick="goQuestion()">No 🤨</button>
+  <button class="btn" onclick="goQ1()">Yes 💓</button>
+  <button class="btn" onclick="goQ1()">No 🤨</button>
 </section>
 
-<!-- QUESTION + NOTES (MISSING PART ADDED) -->
-<section id="questions" class="hidden">
-  <h2 class="main-text">Just one honest question 💜</h2>
+<!-- QUESTION 1 -->
+<section id="q1" class="hidden">
+  <h2 class="main-text">Question 1 💭</h2>
+  <p class="sub-text">Tumhari sabse beautiful quality kya hai?</p>
+  <p style="opacity:.9">(Jo dil bole 🤍)</p>
+  <button class="btn" onclick="nextQ(q1,q2)">Tumhari simplicity 🌸</button>
+  <button class="btn" onclick="nextQ(q1,q2)">Tumhari smile 😊</button>
+  <button class="btn" onclick="nextQ(q1,q2)">Tumhara nature 💫</button>
+  <button class="btn" onclick="nextQ(q1,q2)">Tumhara patience 🤍</button>
+</section>
 
-  <p class="sub-text">
-    Tumhari sabse beautiful baat kya hai, Anshika? ✨
-  </p>
+<!-- QUESTION 2 -->
+<section id="q2" class="hidden">
+  <h2 class="main-text">Question 2 💜</h2>
+  <p class="sub-text">Log tumhare saath comfortable kyun feel karte hain?</p>
+  <button class="btn" onclick="nextQ(q2,q3)">Tum sunna jaanti ho 🫂</button>
+  <button class="btn" onclick="nextQ(q2,q3)">Tum care karti ho 🤍</button>
+  <button class="btn" onclick="nextQ(q2,q3)">Tum samajhti ho 🌸</button>
+  <button class="btn" onclick="nextQ(q2,q3)">Tum real ho ✨</button>
+</section>
 
-  <p style="font-size:15px;opacity:.9;margin-top:8px;">
-    (Right ya wrong kuch nahi… jo dil bole wahi choose karo 🤍)
-  </p>
+<!-- QUESTION 3 -->
+<section id="q3" class="hidden">
+  <h2 class="main-text">Question 3 🌷</h2>
+  <p class="sub-text">Tumhari kaunsi baat sabse zyada special hai?</p>
+  <button class="btn" onclick="nextQ(q3,q4)">Tumhara calm nature 🌙</button>
+  <button class="btn" onclick="nextQ(q3,q4)">Tumhari positivity ☀️</button>
+  <button class="btn" onclick="nextQ(q3,q4)">Tumhari kindness 🤍</button>
+  <button class="btn" onclick="nextQ(q3,q4)">Tumhara honesty ✨</button>
+</section>
 
-  <button class="btn" onclick="answer()">Tumhari simplicity 🌸</button>
-  <button class="btn" onclick="answer()">Tumhari smile 😊</button>
-  <button class="btn" onclick="answer()">Tumhara kind heart 🤍</button>
-  <button class="btn" onclick="answer()">Tumhara nature 💫</button>
+<!-- QUESTION 4 -->
+<section id="q4" class="hidden">
+  <h2 class="main-text">Question 4 💫</h2>
+  <p class="sub-text">Tum itni lovable kaise ho?</p>
+  <button class="btn" onclick="nextQ(q4,q5)">Tum dil se achhi ho 💜</button>
+  <button class="btn" onclick="nextQ(q4,q5)">Tum genuine ho 🌸</button>
+  <button class="btn" onclick="nextQ(q4,q5)">Tum caring ho 🤍</button>
+  <button class="btn" onclick="nextQ(q4,q5)">Tum bas tum ho ✨</button>
+</section>
+
+<!-- QUESTION 5 -->
+<section id="q5" class="hidden">
+  <h2 class="main-text">Last Question 🥹</h2>
+  <p class="sub-text">Tum meri life me kya ho?</p>
+  <button class="btn" onclick="toInbox()">Bahut special 💖</button>
+  <button class="btn" onclick="toInbox()">Pure happiness 🌸</button>
+  <button class="btn" onclick="toInbox()">Peace 🤍</button>
+  <button class="btn" onclick="toInbox()">A blessing ✨</button>
 </section>
 
 <!-- INBOX -->
@@ -189,20 +220,40 @@ section{
 <!-- LETTER -->
 <section id="letter" class="hidden">
   <div id="letter-box">
-    <b>Happy New Year, Anshika 🎉💜</b><br><br>
 
-    Sach bolun toh, jab bhi tum saamne hoti ho na,
-    ek hi thought aata hai — <i>kitni effortlessly special ho tum</i> ✨<br><br>
+    <b style="font-size:20px;">Happy New Year, Anshika 🎉💜</b><br><br>
 
-    Tumhari kindness, tumhara calm nature,
-    aur logon ko comfortable feel karwana —
+    Sach bolun toh, jab bhi tum saamne hoti ho na,<br>
+    ek hi thought aata hai — <i>kitni effortlessly special ho tum</i> ✨  
+    Bina kisi extra effort ke, bina show off ke…  
+    bas naturally 🤍<br><br>
+
+    Tumhari achhaiyaan likhne baithun toh shabd kam pad jaate hain 🥹  
+    Tumhara care karna,  
+    chhoti chhoti baaton ko notice karna,  
+    aur sabse khaas —  
+    <b>logon ko comfortable feel karwana</b> —  
     ye sab tumhe bohot alag banata hai 💫<br><br>
 
-    Is new year ke liye bas itni si wish hai
-    ki tum hamesha apni worth yaad rakho 💎
-    aur apni smile kabhi kam na hone do 😊<br><br>
+    Anshika, meri life mein tumhari presence ek calm si feeling laati hai 🌸  
+    Jaise sab thoda slow ho jaata ho,  
+    aur cheezein zyada simple, zyada clear lagne lagti hain 🤍  
+    Tum woh insaan ho jinke saath silence bhi awkward nahi lagta —  
+    balki safe lagta hai ✨<br><br>
 
-    <b>Always stay the same beautiful soul 🤍</b>
+    Is new year ke liye meri bas ek hi wish hai 🌙  
+    ki tum hamesha apni worth yaad rakho 💎  
+    apni smile kabhi kam na hone do 😊  
+    aur jo bhi sapne dekho,  
+    unke liye khud pe thoda aur bharosa rakho 💜<br><br>
+
+    Thank you, Anshika 🤍  
+    meri life ka itna positive, important hissa banne ke liye 🫂  
+    Tum jaisi ho, bilkul waise hi rehna —  
+    <b>kind, simple, aur beautiful soul 🌸</b><br><br>
+
+    <b>Happy New Year once again ✨💖</b>
+
   </div>
 
   <button class="btn" onclick="showPhotos()">Next 💫</button>
@@ -231,10 +282,7 @@ const milk=document.getElementById("milk");
 const mocha=document.getElementById("mocha");
 const song=document.getElementById("song");
 
-function anim(el,cls,time){
-  el.classList.add(cls);
-  setTimeout(()=>el.classList.remove(cls),time);
-}
+function anim(e,c,t){e.classList.add(c);setTimeout(()=>e.classList.remove(c),t);}
 
 function goMusic(){
   start.classList.add("hidden");
@@ -246,35 +294,27 @@ function playMusic(){
   song.play().catch(()=>{});
   anim(milk,"intro",800);
   anim(mocha,"intro",800);
-
   music.classList.add("hidden");
   opening.classList.remove("hidden");
-
-  setTimeout(()=>{
-    moonText.style.opacity="0";
-    anim(milk,"tiny",500);
-    anim(mocha,"tiny",500);
-  },3500);
+  setTimeout(()=>moonText.style.opacity=0,3500);
 }
 
-function goQuestion(){
+function goQ1(){
   anim(milk,"double",900);
   anim(mocha,"double",900);
-
-  setTimeout(()=>{
-    opening.classList.add("hidden");
-    questions.classList.remove("hidden");
-  },900);
+  setTimeout(()=>{opening.classList.add("hidden");q1.classList.remove("hidden");},900);
 }
 
-function answer(){
+function nextQ(current,next){
   anim(milk,"intro",800);
   anim(mocha,"intro",800);
+  setTimeout(()=>{current.classList.add("hidden");next.classList.remove("hidden");},800);
+}
 
-  setTimeout(()=>{
-    questions.classList.add("hidden");
-    inbox.classList.remove("hidden");
-  },800);
+function toInbox(){
+  anim(milk,"double",900);
+  anim(mocha,"double",900);
+  setTimeout(()=>{q5.classList.add("hidden");inbox.classList.remove("hidden");},900);
 }
 
 function openLetter(){

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Anshika 💜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  background:url("background.jpg") center/cover no-repeat fixed;
+  min-height:100vh;
+  color:white;
+  text-align:center;
+  overflow-x:hidden;
+}
+
+/* Buttons */
+.btn{
+  padding:14px 26px;
+  border-radius:30px;
+  border:none;
+  font-size:16px;
+  cursor:pointer;
+  margin:12px;
+  background:rgba(255,255,255,0.95);
+  transition:transform .2s;
+}
+.btn:active{transform:scale(0.95);}
+.hidden{display:none;}
+
+/* Milk & Mocha */
+.characters{
+  position:fixed;
+  bottom:10px;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:0 18px;
+  pointer-events:none;
+}
+.characters img{
+  width:90px;
+  animation:float 3s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+}
+
+/* Typing */
+#typing{
+  font-size:22px;
+  padding:30px;
+  min-height:120px;
+}
+
+/* Inbox */
+#envelope{
+  width:220px;
+  animation:float 2.5s infinite;
+}
+
+/* Photos */
+#photo{
+  width:80%;
+  max-width:320px;
+  border-radius:18px;
+  margin-bottom:10px;
+}
+
+/* Ending */
+#ending{
+  background:linear-gradient(#020111,#0b1d3a);
+  min-height:100vh;
+  padding-top:80px;
+  position:relative;
+}
+#ending::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url("stars.gif") repeat;
+  opacity:0.9;
+}
+#ending *{position:relative;}
+</style>
+</head>
+
+<body>
+
+<!-- Music -->
+<audio id="song" src="heeriye.mp3"></audio>
+
+<!-- Milk & Mocha -->
+<div class="characters">
+  <img src="milk.png" alt="Milk">
+  <img src="mocha.png" alt="Mocha">
+</div>
+
+<!-- START -->
+<div id="start">
+  <h2>Ready for something cute? 🐻🐼💖</h2>
+  <button class="btn" onclick="startExperience()">Start ✨</button>
+</div>
+
+<!-- MUSIC -->
+<div id="music" class="hidden">
+  <button class="btn" onclick="playMusic()">Play a little magic 🎵✨</button>
+</div>
+
+<!-- TYPING -->
+<div id="typing" class="hidden"></div>
+
+<!-- QUESTION -->
+<div id="question" class="hidden">
+  <p>
+    Itni beautiful Girl 🫠✨<br>
+    Pkka aap Anshika ho 💜. am I right ?
+  </p>
+  <button class="btn" onclick="goInbox()">Yes 💓</button>
+  <button class="btn" onclick="goInbox()">No 🤨</button>
+</div>
+
+<!-- INBOX -->
+<div id="inbox" class="hidden">
+  <img id="envelope" src="inbox.png"><br>
+  <button class="btn" onclick="openLetter()">heyy pretty 🤗 girl open it</button>
+</div>
+
+<!-- LETTER -->
+<div id="letter" class="hidden">
+  <p style="padding:22px;line-height:1.6;">
+    <b>Happy New Year, Anshika 🎉💜</b><br><br>
+    Tum sirf beautiful nahi ho, tum ek pure soul ho ✨<br>
+    Tumhari kindness, care aur calm presence meri life ko better banati hai 🤍<br><br>
+    Thank you for existing in my life 🫂<br>
+    Always stay the same beautiful soul 🌸
+  </p>
+  <button class="btn" onclick="showQuiz()">Next 💫</button>
+</div>
+
+<!-- QUESTIONS -->
+<div id="quiz" class="hidden">
+  <p>Anshika ka nature kaisa hai? 💜</p>
+  <button class="btn" onclick="happy()">Kind 🤍</button>
+  <button class="btn" onclick="happy()">Caring 🫂</button>
+  <button class="btn" onclick="happy()">Calm ✨</button>
+  <button class="btn" onclick="happy()">Pure heart 🌸</button>
+</div>
+
+<!-- PHOTOS -->
+<div id="photos" class="hidden">
+  <img id="photo" src="photo1.jpg"><br>
+  <div>
+    <button class="btn" onclick="prev()">⬅️🐼</button>
+    <button class="btn" onclick="next()">🐻➡️</button>
+  </div>
+  <p id="counter">Photo 1 / 28</p>
+</div>
+
+<!-- ENDING -->
+<div id="ending" class="hidden">
+  <h2>🌙 Milk & Mocha</h2>
+  <p>
+    Some people don’t need big words…<br>
+    their presence itself feels enough 💫
+  </p>
+  <p><b>Happy New Year, Anshika 💜✨</b></p>
+</div>
+
+<script>
+let text="O my God 😯 how gorgeous you are, I can't believe I am seeing the second moon 🌙.";
+let i=0, photoIndex=1;
+
+function startExperience(){
+  start.style.display="none";
+  music.classList.remove("hidden");
+}
+function playMusic(){
+  document.getElementById("song").volume=0.5;
+  document.getElementById("song").play();
+  music.style.display="none";
+  typing.classList.remove("hidden");
+  type();
+}
+function type(){
+  if(i<text.length){
+    typing.innerHTML+=text.charAt(i++);
+    setTimeout(type,45);
+  } else {
+    question.classList.remove("hidden");
+  }
+}
+function goInbox(){
+  question.style.display="none";
+  inbox.classList.remove("hidden");
+}
+function openLetter(){
+  inbox.style.display="none";
+  letter.classList.remove("hidden");
+}
+function showQuiz(){
+  letter.style.display="none";
+  quiz.classList.remove("hidden");
+}
+function happy(){
+  quiz.style.display="none";
+  photos.classList.remove("hidden");
+}
+function next(){
+  if(photoIndex<28){
+    photoIndex++;
+    photo.src=`photo${photoIndex}.jpg`;
+    counter.innerText=`Photo ${photoIndex} / 28`;
+  } else end();
+}
+function prev(){
+  if(photoIndex>1){
+    photoIndex--;
+    photo.src=`photo${photoIndex}.jpg`;
+    counter.innerText=`Photo ${photoIndex} / 28`;
+  }
+}
+function end(){
+  photos.style.display="none";
+  ending.classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>

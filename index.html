@@ -5,22 +5,39 @@
 <title>For Anshika 💜</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: 'Poppins', sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+
 body{
-  background:url("background.jpg") center/cover no-repeat fixed;
   min-height:100vh;
-  color:white;
+  background:url("background.jpg") center/cover no-repeat fixed;
+  font-family:'Poppins',sans-serif;
   text-align:center;
   overflow-x:hidden;
 }
 
-/* Buttons */
+/* COMMON */
+.hidden{display:none;}
+section{padding:40px 20px;}
+
+/* TEXT */
+.main-text{
+  font-family:'Playfair Display',serif;
+  font-size:26px;
+  color:#2e1a47;
+  text-shadow:0 2px 8px rgba(255,255,255,0.7);
+}
+.sub-text{
+  margin-top:14px;
+  font-size:16px;
+  color:#4b2b7f;
+  line-height:1.7;
+}
+
+/* BUTTON */
 .btn{
   padding:14px 26px;
   border-radius:30px;
@@ -28,58 +45,64 @@ body{
   font-size:16px;
   cursor:pointer;
   margin:12px;
-  background:rgba(255,255,255,0.95);
-  transition:transform .2s;
+  background:#fff;
+  color:#333;
+  box-shadow:0 6px 15px rgba(0,0,0,0.15);
 }
 .btn:active{transform:scale(0.95);}
-.hidden{display:none;}
 
-/* Milk & Mocha */
+/* 🐻🐼 MILK & MOCHA */
 .characters{
   position:fixed;
   bottom:10px;
+  left:0;
   width:100%;
   display:flex;
   justify-content:space-between;
   padding:0 18px;
   pointer-events:none;
+  z-index:999;
 }
-.characters img{
+.milk,.mocha{
   width:90px;
   animation:float 3s ease-in-out infinite;
+  will-change:transform;
 }
+.mocha{animation-delay:1.5s;}
 @keyframes float{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-10px);}
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-16px);}
+  100%{transform:translateY(0);}
 }
 
-/* Typing */
-#typing{
-  font-size:22px;
-  padding:30px;
-  min-height:120px;
+/* HAPPY REACTION */
+.happy{animation:bounce .6s ease;}
+@keyframes bounce{
+  0%{transform:translateY(0);}
+  30%{transform:translateY(-24px);}
+  60%{transform:translateY(0);}
 }
 
-/* Inbox */
+/* INBOX */
 #envelope{
   width:220px;
-  animation:float 2.5s infinite;
+  animation:float 2.5s ease-in-out infinite;
 }
 
-/* Photos */
+/* PHOTOS */
 #photo{
   width:80%;
   max-width:320px;
   border-radius:18px;
-  margin-bottom:10px;
 }
 
-/* Ending */
+/* ENDING */
 #ending{
-  background:linear-gradient(#020111,#0b1d3a);
   min-height:100vh;
-  padding-top:80px;
+  background:linear-gradient(#020111,#0b1d3a);
   position:relative;
+  padding-top:90px;
+  color:white;
 }
 #ending::before{
   content:"";
@@ -94,131 +117,159 @@ body{
 
 <body>
 
-<!-- Music -->
-<audio id="song" src="heeriye.mp3"></audio>
+<!-- AUDIO -->
+<audio id="song" preload="auto">
+  <source src="heeriye.mp3" type="audio/mpeg">
+</audio>
 
-<!-- Milk & Mocha -->
+<!-- MILK & MOCHA -->
 <div class="characters">
-  <img src="milk.png" alt="Milk">
-  <img src="mocha.png" alt="Mocha">
+  <img src="milk.png" class="milk" id="milk">
+  <img src="mocha.png" class="mocha" id="mocha">
 </div>
 
 <!-- START -->
-<div id="start">
-  <h2>Ready for something cute? 🐻🐼💖</h2>
+<section id="start">
+  <h2 class="main-text">Ready for something cute? 🐻🐼💖</h2>
   <button class="btn" onclick="startExperience()">Start ✨</button>
-</div>
+</section>
 
 <!-- MUSIC -->
-<div id="music" class="hidden">
+<section id="music" class="hidden">
   <button class="btn" onclick="playMusic()">Play a little magic 🎵✨</button>
-</div>
+</section>
 
-<!-- TYPING -->
-<div id="typing" class="hidden"></div>
+<!-- OPENING -->
+<section id="opening" class="hidden">
+  <div class="main-text">
+    O my God 😯 how gorgeous you are,
+    <span id="moonText">I can't believe I am seeing the second moon 🌙.</span>
+  </div>
 
-<!-- QUESTION -->
-<div id="question" class="hidden">
-  <p>
-    Itni beautiful Girl 🫠✨<br>
+  <div class="sub-text">
+    Itni beautiful Girl 🫠✨ <br>
     Pkka aap Anshika ho 💜. am I right ?
-  </p>
+  </div>
+
   <button class="btn" onclick="goInbox()">Yes 💓</button>
   <button class="btn" onclick="goInbox()">No 🤨</button>
-</div>
+</section>
 
 <!-- INBOX -->
-<div id="inbox" class="hidden">
+<section id="inbox" class="hidden">
   <img id="envelope" src="inbox.png"><br>
   <button class="btn" onclick="openLetter()">heyy pretty 🤗 girl open it</button>
-</div>
+</section>
 
 <!-- LETTER -->
-<div id="letter" class="hidden">
-  <p style="padding:22px;line-height:1.6;">
-    <b>Happy New Year, Anshika 🎉💜</b><br><br>
-    Tum sirf beautiful nahi ho, tum ek pure soul ho ✨<br>
-    Tumhari kindness, care aur calm presence meri life ko better banati hai 🤍<br><br>
-    Thank you for existing in my life 🫂<br>
-    Always stay the same beautiful soul 🌸
-  </p>
-  <button class="btn" onclick="showQuiz()">Next 💫</button>
-</div>
+<section id="letter" class="hidden">
+  <p class="sub-text">
 
-<!-- QUESTIONS -->
-<div id="quiz" class="hidden">
-  <p>Anshika ka nature kaisa hai? 💜</p>
-  <button class="btn" onclick="happy()">Kind 🤍</button>
-  <button class="btn" onclick="happy()">Caring 🫂</button>
-  <button class="btn" onclick="happy()">Calm ✨</button>
-  <button class="btn" onclick="happy()">Pure heart 🌸</button>
-</div>
+<b>Happy New Year, Anshika 🎉💜</b><br><br>
+
+Sach bolun toh, jab bhi tum saamne hoti ho na,<br>
+ek hi thought aata hai — <i>kitni effortlessly special ho tum</i> ✨<br>
+Bina extra try kiye, bina show kiye… bas naturally 🤍<br><br>
+
+Tumhari achhaiyaan count karna mushkil hai,<br>
+par phir bhi likhne ka mann karta hai 🥹<br>
+Tumhara care karna,<br>
+chhoti chhoti baaton ko notice karna,<br>
+aur sabse badi baat — <b>logon ko comfortable feel karwana</b> —<br>
+ye sab tumhe bohot alag banata hai 💫<br><br>
+
+Anshika, meri life me tumhari presence ek calm si feeling laati hai 🌸<br>
+Jaise sab thoda slow ho jaata ho,<br>
+aur cheezein zyada simple, zyada clear lagne lagti hain 🤍<br>
+Tum woh insaan ho jinke saath silence bhi awkward nahi lagta —<br>
+balki safe lagta hai ✨<br><br>
+
+Is new year ke liye bas itni si wish hai 🌙<br>
+ki tum hamesha apni worth yaad rakho 💎<br>
+apni smile kabhi kam na hone do 😊<br>
+aur jo bhi sapne dekho,<br>
+unke liye khud pe thoda aur bharosa rakho 💜<br><br>
+
+Thank you, Anshika 🤍<br>
+meri life ka ek itna positive, important hissa banne ke liye 🫂<br>
+Tum jaisi ho, bilkul waise hi rehna —<br>
+<b>kind, simple, aur beautiful soul 🌸</b><br><br>
+
+<b>Happy New Year once again ✨💖</b>
+
+  </p>
+
+  <button class="btn" onclick="showPhotos()">Next 💫</button>
+</section>
 
 <!-- PHOTOS -->
-<div id="photos" class="hidden">
+<section id="photos" class="hidden">
   <img id="photo" src="photo1.jpg"><br>
-  <div>
-    <button class="btn" onclick="prev()">⬅️🐼</button>
-    <button class="btn" onclick="next()">🐻➡️</button>
-  </div>
-  <p id="counter">Photo 1 / 28</p>
-</div>
+  <button class="btn" onclick="prev()">⬅️🐼</button>
+  <button class="btn" onclick="next()">🐻➡️</button>
+  <div id="counter">Photo 1 / 28</div>
+</section>
 
 <!-- ENDING -->
-<div id="ending" class="hidden">
+<section id="ending" class="hidden">
   <h2>🌙 Milk & Mocha</h2>
-  <p>
-    Some people don’t need big words…<br>
-    their presence itself feels enough 💫
-  </p>
+  <p>Some people don’t need big words…<br>their presence itself feels enough 💫</p>
   <p><b>Happy New Year, Anshika 💜✨</b></p>
-</div>
+</section>
 
 <script>
-let text="O my God 😯 how gorgeous you are, I can't believe I am seeing the second moon 🌙.";
-let i=0, photoIndex=1;
+let photoIndex=1;
 
+/* FLOW */
 function startExperience(){
-  start.style.display="none";
+  start.classList.add("hidden");
   music.classList.remove("hidden");
 }
+
 function playMusic(){
-  document.getElementById("song").volume=0.5;
-  document.getElementById("song").play();
-  music.style.display="none";
-  typing.classList.remove("hidden");
-  type();
+  const s=document.getElementById("song");
+  s.volume=0.6;
+  s.play().catch(()=>alert("Tap once more to allow music 🎵"));
+  music.classList.add("hidden");
+  opening.classList.remove("hidden");
+
+  setTimeout(()=>{
+    const moon=document.getElementById("moonText");
+    if(moon){
+      moon.style.opacity="0";
+      setTimeout(()=>moon.remove(),1000);
+    }
+  },3500);
 }
-function type(){
-  if(i<text.length){
-    typing.innerHTML+=text.charAt(i++);
-    setTimeout(type,45);
-  } else {
-    question.classList.remove("hidden");
-  }
-}
+
 function goInbox(){
-  question.style.display="none";
+  happyPuppies();
+  opening.classList.add("hidden");
   inbox.classList.remove("hidden");
 }
+
 function openLetter(){
-  inbox.style.display="none";
+  happyPuppies();
+  inbox.classList.add("hidden");
   letter.classList.remove("hidden");
 }
-function showQuiz(){
-  letter.style.display="none";
-  quiz.classList.remove("hidden");
-}
-function happy(){
-  quiz.style.display="none";
+
+function showPhotos(){
+  happyPuppies();
+  letter.classList.add("hidden");
   photos.classList.remove("hidden");
 }
+
+/* PHOTOS */
 function next(){
   if(photoIndex<28){
     photoIndex++;
     photo.src=`photo${photoIndex}.jpg`;
     counter.innerText=`Photo ${photoIndex} / 28`;
-  } else end();
+  }else{
+    photos.classList.add("hidden");
+    ending.classList.remove("hidden");
+  }
 }
 function prev(){
   if(photoIndex>1){
@@ -227,9 +278,15 @@ function prev(){
     counter.innerText=`Photo ${photoIndex} / 28`;
   }
 }
-function end(){
-  photos.style.display="none";
-  ending.classList.remove("hidden");
+
+/* 🐻🐼 HAPPY */
+function happyPuppies(){
+  milk.classList.add("happy");
+  mocha.classList.add("happy");
+  setTimeout(()=>{
+    milk.classList.remove("happy");
+    mocha.classList.remove("happy");
+  },600);
 }
 </script>
 

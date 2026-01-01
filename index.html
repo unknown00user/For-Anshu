@@ -5,203 +5,141 @@
 <meta charset="UTF-8">
 <title>For Anshika 💜</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    min-height:100vh;
+    background:url("background.jpg") center/cover no-repeat fixed;
+    font-family:'Poppins',sans-serif;
+    text-align:center;
+    color:#2e1a47;
+  }
+  .hidden{display:none !important;}
 
-body{
-  min-height:100vh;
-  background:url("background.jpg") center/cover no-repeat fixed;
-  font-family:'Poppins',sans-serif;
-  text-align:center;
-  overflow-x:hidden;
-  color:#2e1a47;
-}
+  /* --- TOP AUTO SLIDESHOW --- */
+  .slideshow-wrapper {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .photo-frame {
+    width: 280px;
+    height: 350px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    position: absolute;
+    inset: 0;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+  }
+  .photo-frame img.active { opacity: 1; }
 
-.hidden{display:none !important;}
+  /* --- CONTENT AREA --- */
+  section {
+    min-height: 50vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .main-text {
+    font-family:'Playfair Display',serif;
+    font-size: 26px;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 10px rgba(255,255,255,0.8);
+  }
+  .sub-text { font-size: 18px; margin-bottom: 20px; }
+  .btn {
+    padding: 14px 26px;
+    border-radius: 30px;
+    border: none;
+    margin: 8px;
+    background: #fff;
+    color: #333;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  }
 
-section{
-  min-height:90vh;
-  padding:40px 20px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-}
+  /* --- MILK & MOCHA --- */
+  .characters {
+    position: fixed; bottom: 10px; left: 0; width: 100%;
+    display: flex; justify-content: space-between;
+    padding: 0 18px; pointer-events: none; z-index: 999;
+  }
+  .characters img { width: 85px; }
+  .bounce { animation: bounce 0.8s ease; }
+  @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-15px);} }
 
-.main-text{
-  font-family:'Playfair Display',serif;
-  font-size:26px;
-  color:#2b174f;
-  text-shadow:0 4px 12px rgba(255,255,255,0.6);
-}
+  #moonText { transition: opacity 2s ease; }
 
-.sub-text{
-  font-size:18px;
-  margin-top:18px;
-  line-height:1.7;
-}
-
-.btn{
-  padding:14px 26px;
-  border-radius:30px;
-  border:none;
-  margin:10px;
-  background:#fff;
-  color:#333;
-  font-weight:600;
-  cursor:pointer;
-  box-shadow:0 6px 15px rgba(0,0,0,.3);
-}
-.btn:active{transform:scale(.9);}
-
-/* Milk & Mocha */
-.characters{
-  position:fixed;
-  bottom:10px;
-  left:0;
-  width:100%;
-  display:flex;
-  justify-content:space-between;
-  padding:0 18px;
-  pointer-events:none;
-  z-index:999;
-}
-.characters img{width:90px;}
-
-/* Animations */
-.intro{animation:intro .8s ease;}
-@keyframes intro{
-  0%{transform:translateY(0) scale(1);}
-  50%{transform:translateY(-16px) scale(1.05);}
-  100%{transform:translateY(0) scale(1);}
-}
-
-.double{animation:double .9s ease;}
-@keyframes double{
-  0%,100%{transform:translateY(0);}
-  30%{transform:translateY(-22px);}
-  60%{transform:translateY(0);}
-  80%{transform:translateY(-10px);}
-}
-
-/* PHOTO FRAME SLIDESHOW */
-.photo-frame{
-  width:300px;
-  height:380px;
-  background:#fff;
-  padding:10px;
-  border-radius:18px;
-  box-shadow:0 10px 30px rgba(0,0,0,.35);
-  margin-bottom:25px;
-  position:relative;
-  overflow:hidden;
-}
-
-.photo-frame img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:12px;
-  position:absolute;
-  inset:0;
-  opacity:0;
-  transition:opacity 1.2s ease-in-out;
-}
-
-.photo-frame img.active{
-  opacity:1;
-}
-
-/* Moon text smooth fade */
-#moonText{
-  transition:opacity 2s ease;
-}
-
-/* Letter */
-#letter-box{
-  background:rgba(255,255,255,.92);
-  color:#2e1a47;
-  padding:25px;
-  border-radius:15px;
-  max-width:95%;
-  line-height:1.8;
-}
-
-/* Photos section */
-#photo{
-  width:280px;
-  border-radius:15px;
-  border:4px solid white;
-  margin-bottom:15px;
-}
-
-/* Ending */
-#ending{
-  background:linear-gradient(#020111,#0b1d3a);
-  position:relative;
-  color:white;
-}
-#ending::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:url("stars.gif") repeat;
-  opacity:.8;
-}
-#ending *{position:relative;}
+  /* --- ENVELOPE/LETTER BOX --- */
+  #letter-box {
+    background: rgba(255,255,255,0.92);
+    padding: 25px;
+    border-radius: 15px;
+    max-width: 95%;
+    text-align: left;
+    line-height: 1.8;
+    color: #2e1a47;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
 </style>
 </head>
 
 <body>
 
-<audio id="song" src="heeriye.mp3" preload="auto"></audio>
+<audio id="song" src="heeriye.mp3" preload="auto" loop></audio>
+
+<div class="slideshow-wrapper">
+  <div class="photo-frame" id="slideshow">
+    </div>
+</div>
 
 <div class="characters">
   <img src="milk.png" id="milk">
   <img src="mocha.png" id="mocha">
 </div>
 
-<!-- START -->
 <section id="start">
   <h2 class="main-text">Ready for something cute? 🐻🐼💖</h2>
-  <button class="btn" onclick="goMusic()">Start ✨</button>
+  <button class="btn" onclick="goStep('start','music')">Start ✨</button>
 </section>
 
-<!-- MUSIC -->
 <section id="music" class="hidden">
   <h2 class="main-text">A little magic for you 🎵</h2>
   <button class="btn" onclick="playMusic()">Play ✨</button>
 </section>
 
-<!-- OPENING -->
 <section id="opening" class="hidden">
-
-  <div class="photo-frame">
-    <img src="photo1.jpg" class="active">
-    <img src="photo2.jpg">
-    <img src="photo3.jpg">
-    <img src="photo4.jpg">
-  </div>
-
   <h2 class="main-text">
     O my God 😯 how gorgeous you are,<br>
     <span id="moonText">I can't believe I am seeing the second moon 🌙.</span>
   </h2>
-
-  <p class="sub-text">
-    Itni beautiful Girl 🫠✨<br>
-    Pkka aap Anshika ho 💜. am I right ?
-  </p>
-
-  <button class="btn" onclick="goQ1()">Yes 💓</button>
-  <button class="btn" onclick="goQ1()">No 🤨</button>
+  <p class="sub-text">Itni beautiful Girl 🫠✨<br>Pkka aap Anshika ho 💜. am I right ?</p>
+  <button class="btn" onclick="goStep('opening','q1')">Yes 💓</button>
+  <button class="btn" onclick="goStep('opening','q1')">No 🤨</button>
 </section>
 
-<!-- QUESTIONS -->
-<section id="q1" class="hidden">
+section id="q1" class="hidden">
   <h2 class="main-text">Question 1 💭</h2>
   <p class="sub-text">Tumhari sabse beautiful quality kya hai?</p>
   <button class="btn" onclick="nextQ(q1,q2)">Tumhari simplicity 🌸</button>
@@ -225,7 +163,7 @@ section{
   <button class="btn" onclick="nextQ(q3,q4)">Tumhara calm nature 🌙</button>
   <button class="btn" onclick="nextQ(q3,q4)">Tumhari positivity ☀️</button>
   <button class="btn" onclick="nextQ(q3,q4)">Tumhari kindness 🤍</button>
-  <button class="btn" onclick="nextQ(q3,q4)">Tumhari honesty ✨</button>
+  <button class="btn" onclick="nextQ(q3,q4)">Tumhara honesty ✨</button>
 </section>
 
 <section id="q4" class="hidden">
@@ -255,145 +193,78 @@ section{
   <div id="letter-box">
     <b style="font-size:20px;">Happy New Year, Anshika 🎉💜</b><br><br>
     Sach bolun toh, jab bhi tum saamne hoti ho na,<br><br>
-    ek hi thought aata hai — <i>kitni effortlessly special ho tum</i> ✨  
-    Bina kisi extra effort ke, bina show off ke…  
-    bas naturally 🤍<br><br>
-
-    Tumhari achhaiyaan likhne baithun toh shabd kam pad jaate hain 🥹  
-    Tumhara care karna,  
-    chhoti chhoti baaton ko notice karna,  
-    aur sabse khaas —  
-    <b>logon ko comfortable feel karwana</b> —  
+    ek hi thought aata hai — <i>kitni effortlessly special ho tum</i> ✨<br>
+    Bina kisi extra effort ke, bina show off ke… bas naturally 🤍<br><br>
+    Tumhari achhaiyaan likhne baithun toh shabd kam pad jaate hain 🥹<br>
+    Tumhara care karna, chhoti chhoti baaton ko notice karna,<br>
+    aur sabse khaas — <b>logon ko comfortable feel karwana</b> —<br>
     ye sab tumhe bohot alag banata hai 💫<br><br>
-
-    Anshika, meri life mein tumhari presence ek calm si feeling laati hai 🌸  
-    Jaise sab thoda slow ho jaata ho,  
-    aur cheezein zyada simple, zyada clear lagne lagti hain 🤍  
-    Tum woh insaan ho jinke saath silence bhi awkward nahi lagta —  
-    balki safe lagta hai ✨<br><br>
-
-    Is new year ke liye meri bas ek hi wish hai 🌙  
-    ki tum hamesha apni worth yaad rakho 💎  
-    apni smile kabhi kam na hone do 😊  
-    aur jo bhi sapne dekho,  
-    unke liye khud pe thoda aur bharosa rakho 💜<br><br>
-
-    Thank you, Anshika 🤍  
-    meri life ka itna positive, important hissa banne ke liye 🫂  
-    Tum jaisi ho, bilkul waise hi rehna —  
-    <b>kind, simple, aur beautiful soul 🌸
-    <br><br>
-    <b>Happy New Year once again ✨💖</b>
+    Anshika, meri life mein tumhari presence ek calm si feeling laati hai 🌸<br>
+    Jaise sab thoda slow ho jaata ho, aur cheezein zyada simple, zyada clear lagne lagti hain 🤍<br>
+    Tum woh insaan ho jinke saath silence bhi awkward nahi lagta — balki safe lagta hai ✨<br><br>
+    Is new year ke liye meri bas ek hi wish hai 🌙 ki tum hamesha apni worth yaad rakho 💎 apni smile kabhi kam na hone do 😊 aur jo bhi sapne dekho, unke liye khud pe thoda aur bharosa rakho 💜<br><br>
+    Thank you, Anshika 🤍 mujhe apna best friend bananale k liye aur important hissa banne ke liye 🫂<br>
+    Tum jaisi ho, bilkul waise hi rehna — <b>kind, simple, aur beautiful soul 🌸</b><br><br>
+    <b>Happy New Year once again my Best Friend ✨💖</b>
   </div>
-  <button class="btn" onclick="showPhotos()">Next 💫</button>
+  <button class="btn" onclick="goStep('letter','ending')">Next 💫</button>
 </section>
 
-<section id="photos" class="hidden">
-  <img id="photo" src="photo1.jpg">
-  <div>
-    <button class="btn" onclick="prev()">⬅️🐼</button>
-    <button class="btn" onclick="next()">🐻➡️</button>
-  </div>
-  <p id="counter">Photo 1 / 28</p>
-</section>
-
-<section id="ending" class="hidden">
+<section id="ending" class="hidden" style="background:linear-gradient(#020111,#0b1d3a); color:white; min-height:100vh; padding-top:80px;">
   <h2 class="main-text">🌙 Milk & Mocha</h2>
-  <p>Some people don’t need big words…<br>their presence itself feels enough 💫</p>
-  <h3>Happy New Year, Anshika 💜✨</h3>
+  <p>Some people don’t need big words… their presence is enough 💫</p>
+  <h3 style="margin-top:30px;">Happy New Year, Anshika 💜✨</h3>
 </section>
 
 <script>
-let photoIndex=1;
-const milk=document.getElementById("milk");
-const mocha=document.getElementById("mocha");
-const song=document.getElementById("song");
+// 1. GENERATE SLIDESHOW (28 Photos)
+const container = document.getElementById("slideshow");
+for(let i=1; i<=28; i++){
+  let img = document.createElement("img");
+  img.src = `photo${i}.jpg`;
+  if(i===1) img.classList.add("active");
+  container.appendChild(img);
+}
 
-/* frame slideshow */
-const framePhotos=document.querySelectorAll(".photo-frame img");
-let frameIndex=0;
-setInterval(()=>{
-  framePhotos[frameIndex].classList.remove("active");
-  frameIndex=(frameIndex+1)%framePhotos.length;
-  framePhotos[frameIndex].classList.add("active");
-},3000);
+// 2. AUTO CHANGE PHOTOS (3.5 Seconds)
+let current = 0;
+const imgs = document.querySelectorAll("#slideshow img");
+setInterval(() => {
+  imgs[current].classList.remove("active");
+  current = (current + 1) % imgs.length;
+  imgs[current].classList.add("active");
+}, 3500);
 
-function anim(e,c,t){e.classList.add(c);setTimeout(()=>e.classList.remove(c),t);}
+// 3. ANIMATION & NAVIGATION
+const milk = document.getElementById("milk");
+const mocha = document.getElementById("mocha");
+const song = document.getElementById("song");
 
-function goMusic(){
-  start.classList.add("hidden");
-  music.classList.remove("hidden");
+function anim(){
+  milk.classList.add("bounce"); mocha.classList.add("bounce");
+  setTimeout(()=>{ milk.classList.remove("bounce"); mocha.classList.remove("bounce"); }, 800);
+}
+
+function goStep(curr, next){
+  anim();
+  document.getElementById(curr).classList.add("hidden");
+  document.getElementById(next).classList.remove("hidden");
+  window.scrollTo(0,0); // Scroll to top for new sections
 }
 
 function playMusic(){
-  song.volume=0.6;
-  song.play().catch(()=>{});
-  anim(milk,"intro",800);
-  anim(mocha,"intro",800);
-  music.classList.add("hidden");
-  opening.classList.remove("hidden");
+  song.volume = 0.6;
+  song.play();
+  anim();
+  document.getElementById("music").classList.add("hidden");
+  document.getElementById("opening").classList.remove("hidden");
 
-  setTimeout(()=>{
-    moonText.style.opacity=0;
-  },9000);
-}
-
-function goQ1(){
-  anim(milk,"double",900);
-  anim(mocha,"double",900);
-  setTimeout(()=>{
-    opening.classList.add("hidden");
-    q1.classList.remove("hidden");
-  },900);
-}
-
-function nextQ(c,n){
-  anim(milk,"intro",800);
-  anim(mocha,"intro",800);
-  setTimeout(()=>{
-    c.classList.add("hidden");
-    n.classList.remove("hidden");
-  },800);
-}
-
-function toInbox(){
-  anim(milk,"double",900);
-  anim(mocha,"double",900);
-  setTimeout(()=>{
-    q5.classList.add("hidden");
-    inbox.classList.remove("hidden");
-  },900);
-}
-
-function openLetter(){
-  inbox.classList.add("hidden");
-  letter.classList.remove("hidden");
-}
-
-function showPhotos(){
-  letter.classList.add("hidden");
-  photos.classList.remove("hidden");
-}
-
-function next(){
-  if(photoIndex<28){
-    photoIndex++;
-    photo.src=`photo${photoIndex}.jpg`;
-    counter.innerText=`Photo ${photoIndex} / 28`;
-  }else{
-    photos.classList.add("hidden");
-    ending.classList.remove("hidden");
-  }
-}
-
-function prev(){
-  if(photoIndex>1){
-    photoIndex--;
-    photo.src=`photo${photoIndex}.jpg`;
-    counter.innerText=`Photo ${photoIndex} / 28`;
-  }
+  // DELAYED MOON FADE (12 Seconds for extra reading time)
+  setTimeout(() => {
+    const moon = document.getElementById("moonText");
+    if(moon) moon.style.opacity = 0;
+  }, 12000);
 }
 </script>
-
 </body>
 </html>

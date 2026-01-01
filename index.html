@@ -17,12 +17,11 @@ body{
   font-family:'Poppins',sans-serif;
   text-align:center;
   overflow-x:hidden;
-
-  /* NEW COLOR FIX */
-  color:#2e1a47; /* deep purple – soft & readable */
+  color:#2e1a47;
 }
 
 .hidden{display:none !important;}
+
 section{
   min-height:90vh;
   padding:40px 20px;
@@ -35,9 +34,10 @@ section{
 .main-text{
   font-family:'Playfair Display',serif;
   font-size:26px;
-  color:#2b174f; /* dark royal purple */
+  color:#2b174f;
   text-shadow:0 4px 12px rgba(255,255,255,0.6);
 }
+
 .sub-text{
   font-size:18px;
   margin-top:18px;
@@ -57,7 +57,7 @@ section{
 }
 .btn:active{transform:scale(.9);}
 
-/* MILK & MOCHA */
+/* Milk & Mocha */
 .characters{
   position:fixed;
   bottom:10px;
@@ -71,13 +71,14 @@ section{
 }
 .characters img{width:90px;}
 
-/* ANIMATIONS */
+/* Animations */
 .intro{animation:intro .8s ease;}
 @keyframes intro{
   0%{transform:translateY(0) scale(1);}
   50%{transform:translateY(-16px) scale(1.05);}
   100%{transform:translateY(0) scale(1);}
 }
+
 .double{animation:double .9s ease;}
 @keyframes double{
   0%,100%{transform:translateY(0);}
@@ -85,13 +86,41 @@ section{
   60%{transform:translateY(0);}
   80%{transform:translateY(-10px);}
 }
-.tiny{animation:tiny .5s ease;}
-@keyframes tiny{
-  0%,100%{transform:scale(1);}
-  50%{transform:scale(1.03) translateY(-3px);}
+
+/* PHOTO FRAME SLIDESHOW */
+.photo-frame{
+  width:300px;
+  height:380px;
+  background:#fff;
+  padding:10px;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+  margin-bottom:25px;
+  position:relative;
+  overflow:hidden;
 }
 
-/* LETTER */
+.photo-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:12px;
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transition:opacity 1.2s ease-in-out;
+}
+
+.photo-frame img.active{
+  opacity:1;
+}
+
+/* Moon text smooth fade */
+#moonText{
+  transition:opacity 2s ease;
+}
+
+/* Letter */
 #letter-box{
   background:rgba(255,255,255,.92);
   color:#2e1a47;
@@ -101,7 +130,7 @@ section{
   line-height:1.8;
 }
 
-/* PHOTOS */
+/* Photos section */
 #photo{
   width:280px;
   border-radius:15px;
@@ -109,10 +138,11 @@ section{
   margin-bottom:15px;
 }
 
-/* ENDING */
+/* Ending */
 #ending{
   background:linear-gradient(#020111,#0b1d3a);
   position:relative;
+  color:white;
 }
 #ending::before{
   content:"";
@@ -148,30 +178,38 @@ section{
 
 <!-- OPENING -->
 <section id="opening" class="hidden">
+
+  <div class="photo-frame">
+    <img src="photo1.jpg" class="active">
+    <img src="photo2.jpg">
+    <img src="photo3.jpg">
+    <img src="photo4.jpg">
+  </div>
+
   <h2 class="main-text">
     O my God 😯 how gorgeous you are,<br>
     <span id="moonText">I can't believe I am seeing the second moon 🌙.</span>
   </h2>
+
   <p class="sub-text">
     Itni beautiful Girl 🫠✨<br>
     Pkka aap Anshika ho 💜. am I right ?
   </p>
+
   <button class="btn" onclick="goQ1()">Yes 💓</button>
   <button class="btn" onclick="goQ1()">No 🤨</button>
 </section>
 
-<!-- QUESTION 1 -->
+<!-- QUESTIONS -->
 <section id="q1" class="hidden">
   <h2 class="main-text">Question 1 💭</h2>
   <p class="sub-text">Tumhari sabse beautiful quality kya hai?</p>
-  <p style="opacity:.9">(Jo dil bole 🤍)</p>
   <button class="btn" onclick="nextQ(q1,q2)">Tumhari simplicity 🌸</button>
   <button class="btn" onclick="nextQ(q1,q2)">Tumhari smile 😊</button>
   <button class="btn" onclick="nextQ(q1,q2)">Tumhara nature 💫</button>
   <button class="btn" onclick="nextQ(q1,q2)">Tumhara patience 🤍</button>
 </section>
 
-<!-- QUESTION 2 -->
 <section id="q2" class="hidden">
   <h2 class="main-text">Question 2 💜</h2>
   <p class="sub-text">Log tumhare saath comfortable kyun feel karte hain?</p>
@@ -181,17 +219,15 @@ section{
   <button class="btn" onclick="nextQ(q2,q3)">Tum real ho ✨</button>
 </section>
 
-<!-- QUESTION 3 -->
 <section id="q3" class="hidden">
   <h2 class="main-text">Question 3 🌷</h2>
   <p class="sub-text">Tumhari kaunsi baat sabse zyada special hai?</p>
   <button class="btn" onclick="nextQ(q3,q4)">Tumhara calm nature 🌙</button>
   <button class="btn" onclick="nextQ(q3,q4)">Tumhari positivity ☀️</button>
   <button class="btn" onclick="nextQ(q3,q4)">Tumhari kindness 🤍</button>
-  <button class="btn" onclick="nextQ(q3,q4)">Tumhara honesty ✨</button>
+  <button class="btn" onclick="nextQ(q3,q4)">Tumhari honesty ✨</button>
 </section>
 
-<!-- QUESTION 4 -->
 <section id="q4" class="hidden">
   <h2 class="main-text">Question 4 💫</h2>
   <p class="sub-text">Tum itni lovable kaise ho?</p>
@@ -201,7 +237,6 @@ section{
   <button class="btn" onclick="nextQ(q4,q5)">Tum bas tum ho ✨</button>
 </section>
 
-<!-- QUESTION 5 -->
 <section id="q5" class="hidden">
   <h2 class="main-text">Last Question 🥹</h2>
   <p class="sub-text">Tum meri life me kya ho?</p>
@@ -211,19 +246,15 @@ section{
   <button class="btn" onclick="toInbox()">A blessing ✨</button>
 </section>
 
-<!-- INBOX -->
 <section id="inbox" class="hidden">
   <img src="inbox.png" style="width:200px;margin-bottom:20px;">
   <button class="btn" onclick="openLetter()">heyy pretty 🤗 girl open it</button>
 </section>
 
-<!-- LETTER -->
 <section id="letter" class="hidden">
   <div id="letter-box">
-
     <b style="font-size:20px;">Happy New Year, Anshika 🎉💜</b><br><br>
-
-    Sach bolun toh, jab bhi tum saamne hoti ho na,<br>
+    Sach bolun toh, jab bhi tum saamne hoti ho na,<br><br>
     ek hi thought aata hai — <i>kitni effortlessly special ho tum</i> ✨  
     Bina kisi extra effort ke, bina show off ke…  
     bas naturally 🤍<br><br>
@@ -250,16 +281,13 @@ section{
     Thank you, Anshika 🤍  
     meri life ka itna positive, important hissa banne ke liye 🫂  
     Tum jaisi ho, bilkul waise hi rehna —  
-    <b>kind, simple, aur beautiful soul 🌸</b><br><br>
-
+    <b>kind, simple, aur beautiful soul 🌸
+    <br><br>
     <b>Happy New Year once again ✨💖</b>
-
   </div>
-
   <button class="btn" onclick="showPhotos()">Next 💫</button>
 </section>
 
-<!-- PHOTOS -->
 <section id="photos" class="hidden">
   <img id="photo" src="photo1.jpg">
   <div>
@@ -269,7 +297,6 @@ section{
   <p id="counter">Photo 1 / 28</p>
 </section>
 
-<!-- ENDING -->
 <section id="ending" class="hidden">
   <h2 class="main-text">🌙 Milk & Mocha</h2>
   <p>Some people don’t need big words…<br>their presence itself feels enough 💫</p>
@@ -281,6 +308,15 @@ let photoIndex=1;
 const milk=document.getElementById("milk");
 const mocha=document.getElementById("mocha");
 const song=document.getElementById("song");
+
+/* frame slideshow */
+const framePhotos=document.querySelectorAll(".photo-frame img");
+let frameIndex=0;
+setInterval(()=>{
+  framePhotos[frameIndex].classList.remove("active");
+  frameIndex=(frameIndex+1)%framePhotos.length;
+  framePhotos[frameIndex].classList.add("active");
+},3000);
 
 function anim(e,c,t){e.classList.add(c);setTimeout(()=>e.classList.remove(c),t);}
 
@@ -296,25 +332,37 @@ function playMusic(){
   anim(mocha,"intro",800);
   music.classList.add("hidden");
   opening.classList.remove("hidden");
-  setTimeout(()=>moonText.style.opacity=0,3500);
+
+  setTimeout(()=>{
+    moonText.style.opacity=0;
+  },9000);
 }
 
 function goQ1(){
   anim(milk,"double",900);
   anim(mocha,"double",900);
-  setTimeout(()=>{opening.classList.add("hidden");q1.classList.remove("hidden");},900);
+  setTimeout(()=>{
+    opening.classList.add("hidden");
+    q1.classList.remove("hidden");
+  },900);
 }
 
-function nextQ(current,next){
+function nextQ(c,n){
   anim(milk,"intro",800);
   anim(mocha,"intro",800);
-  setTimeout(()=>{current.classList.add("hidden");next.classList.remove("hidden");},800);
+  setTimeout(()=>{
+    c.classList.add("hidden");
+    n.classList.remove("hidden");
+  },800);
 }
 
 function toInbox(){
   anim(milk,"double",900);
   anim(mocha,"double",900);
-  setTimeout(()=>{q5.classList.add("hidden");inbox.classList.remove("hidden");},900);
+  setTimeout(()=>{
+    q5.classList.add("hidden");
+    inbox.classList.remove("hidden");
+  },900);
 }
 
 function openLetter(){
@@ -332,13 +380,12 @@ function next(){
     photoIndex++;
     photo.src=`photo${photoIndex}.jpg`;
     counter.innerText=`Photo ${photoIndex} / 28`;
-    if(photoIndex%2===0) anim(milk,"intro",800);
-    if(photoIndex%3===0) anim(mocha,"intro",800);
   }else{
     photos.classList.add("hidden");
     ending.classList.remove("hidden");
   }
 }
+
 function prev(){
   if(photoIndex>1){
     photoIndex--;
